@@ -87,7 +87,7 @@ class HocsinhController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updateData = DB::table('studentư')->where('id', $request->id)->update([
+        $updateData = DB::table('students')->where('id', $request->id)->update([
             'full_name' => $request->full_name,
             'email' => $request->email,
             'avatar' => $request->avatar,
