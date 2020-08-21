@@ -49,9 +49,8 @@ class HocsinhController extends Controller
             'full_name' => $allRequest['full_name'],
             'address' => $allRequest['address'],
 	);
-	
-	    $insertData = DB::table('students')->insert($dataInsertToDatabase);
-	    return redirect('student');
+        $insertData = DB::table('students')->insert($dataInsertToDatabase);
+        return redirect('student');
     }
 
     /**
