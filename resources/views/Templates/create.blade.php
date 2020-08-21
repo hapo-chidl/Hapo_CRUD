@@ -1,27 +1,27 @@
-@extends('Templates.master')
+@extends('Templates.master') 
+
 @section('title','Thêm mới học sinh') 
+
 @section('content')
+
 <div class="page-header">
     <h4>Quản lý học sinh</h4>
 </div>
+
 @if ( Session::has('success') )
     <div class="alert alert-success alert-dismissible" role="alert">
-        <strong> {{ Session::get('success') }} </strong> 
-        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
-	        <span aria-hidden="true">&times;</span> 
-	        <span class="sr-only">Close</span>
-	    </button>
+        <strong>{{ Session::get('success') }}</strong> 
+        <button aria-label="Close" class="close" data-dismiss="alert"
+        type="button"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button>
     </div>
+    
 @endif 
 @if ( Session::has('error') )
     <div class="alert alert-danger alert-dismissible" role="alert">
-        <strong>{{ Session::get('error') }}</strong> 
-	    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
-		    <span aria-hidden="true">&times;</span> 
-		    <span class="sr-only">Close</span>
-	    </button>
+        <strong>{{ Session::get('error') }}</strong> <button aria-label="Close" class="close" data-dismiss="alert"
+        type="button"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button>
     </div>
-@endif 
+@endif
 <p><a class="btn btn-primary" href="{{ url('/student') }}">Về danh sách</a></p>
 <div class="col-xs-4 col-xs-offset-4">
     <h4>Thêm học sinh</h4>
@@ -61,4 +61,3 @@
     </form>
 </div>
 @endsection
-	

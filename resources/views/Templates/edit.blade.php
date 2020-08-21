@@ -1,40 +1,36 @@
-@extends('Templates.master')
 
-@section('title','Quản lý học sinh')
+@extends('Templates.master') 
+
+@section('title','Quản lý học sinh') 
 
 @section('content')
 
-<div class="page-header"><h4>Quản lý học sinh</h4></div>
-
-<?php ?>
+<div class="page-header">
+    <h4>Quản lý học sinh</h4>
+</div>
 @if ( Session::has('success') )
     <div class="alert alert-danger alert-dismissible" role="alert">
-		<strong>{{ Session::get('success') }}</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-	        <span class="sr-only">Close</span>
-        </button>
-	</div>
-@endif
+        <strong>{{ Session::get('success') }}</strong> 
+		<button aria-label="Close" class="close" data-dismiss="alert" type="button">
+		    <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
+		</button>
+    </div>
+@endif 
 
-<?php ?>
 @if ( Session::has('error') )
     <div class="alert alert-danger alert-dismissible" role="alert">
-		<strong>{{ Session::get('error') }}</strong>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-			<span class="sr-only">Close</span>
-		</button>
-	</div>
-@endif
+        <strong>{{ Session::get('error') }}</strong> 
+		<button aria-label="Close" class="close" data-dismiss="alert"
+        type="button"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button>
+    </div>
+@endif 
 
-<?php ?>
-<p><a class="btn btn-primary" href="/{{ url('/student') }}">Về danh sách</a></p>
+<p><a class="btn btn-primary" href="/{{%20url('/student')%20}}">Về danh sách</a></p>
 <div class="col-xs-4 col-xs-offset-4">
-	<center><h4>Sửa học sinh</h4></center>
-	<form action="{{ url('/student') }}" method="post">
-		@csrf
-	    <input type="hidden" id="id" name="id" value="{!! $getHocSinhById[0]->id !!}" />
+    <center><h4>Sửa học sinh</h4></center>
+    <form action="{{ url('/student') }}" method="post">
+        @csrf 
+		<input type="hidden" id="id" name="id" value="{!! $getHocSinhById[0]->id !!}" />
 	    <div class="form-group">
 			<label for=Fullname">Tên học sinh</label>
 			<input type="text" class="form-control" id="full_name" name="full_name" placeholder="Tên học sinh" maxlength="255" value="{{ $getHocSinhById[0]->full_name}}" required />
@@ -54,5 +50,4 @@
 	    <center><button type="submit" class="btn btn-primary">Lưu lại</button></center>
 	</form>
 </div>
-
 @endsection
