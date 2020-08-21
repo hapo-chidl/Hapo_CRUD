@@ -55,7 +55,7 @@
                         <td><a href="/student/{{ $hocsinh->id }}/edit">Edit</a></td>
                         <td><a href="/student/{{ $hocsinh->id }}">Delete</a></td>
                     </tr>
-				@endforeach
+                @endforeach
                 </tbody>
             </table>
         </div>
