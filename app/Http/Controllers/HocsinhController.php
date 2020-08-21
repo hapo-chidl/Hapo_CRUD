@@ -52,12 +52,6 @@ class HocsinhController extends Controller
 	);
 	
 	$insertData = DB::table('students')->insert($dataInsertToDatabase);
-	if ($insertData) {
-		Session::flash('success', 'Thêm mới học sinh thành công!');
-	}else {                        
-		Session::flash('error', 'Thêm thất bại!');
-	}
-	
 	return redirect('student');
     }
 
@@ -99,13 +93,6 @@ class HocsinhController extends Controller
             'avatar' => $request->avatar,
             'address' => $request->address
         ]);
-
-	if ($updateData) {
-		Session::flash('success', 'Sửa học sinh thành công!');
-	}else {                        
-		Session::flash('error', 'Sửa thất bại!');
-    }
-    
 	return redirect('student');
     }
 
@@ -118,11 +105,6 @@ class HocsinhController extends Controller
     public function destroy($id)
     {
         $deleteData = DB::table('students')->where('id','=',$id)->delete();
-        if ($deleteData) {
-            Session::flash('success', 'Xóa học sinh thành công!');
-        }else {                        
-            Session::flash('error', 'Xóa thất bại!');
-        }
        return  redirect('student');
     }
 }

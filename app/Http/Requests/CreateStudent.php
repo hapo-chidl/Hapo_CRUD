@@ -24,7 +24,7 @@ class CreateStudent extends FormRequest
     public function rules()
     {
         return [
-               'Fullname' => 'bail|required',
+               'full_name' => 'bail|required',
                 'email' => 'bail|required|email',
                 'avatar' => 'bail|required',
                 'address' => 'bail|required',
