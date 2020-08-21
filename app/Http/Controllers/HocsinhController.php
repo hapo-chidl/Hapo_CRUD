@@ -46,9 +46,9 @@ class HocsinhController extends Controller
         $allRequest  = $request->all();
         $dataInsertToDatabase = array(
             'avatar' => $allRequest['avatar'],
-            'email' =>$allRequest['email'],
+            'email' => $allRequest['email'],
             'full_name'  => $allRequest['full_name'],
-            'address' =>$allRequest['address'],
+            'address' => $allRequest['address'],
 	);
 	
 	$insertData = DB::table('students')->insert($dataInsertToDatabase);
@@ -105,6 +105,6 @@ class HocsinhController extends Controller
     public function destroy($id)
     {
         $deleteData = DB::table('students')->where('id','=',$id)->delete();
-        return  redirect('student');
+        return redirect('student');
     }
 }
