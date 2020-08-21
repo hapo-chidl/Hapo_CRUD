@@ -36,8 +36,8 @@
 		@csrf
 		<input type="hidden" id="id" name="id" value="{!! $getHocSinhById[0]->id !!}" />
         <div class="form-group">
-			<label for="Fullname">Tên học sinh</label>
-			<input type="text" class="form-control" id="Fullname" name="Fullname" placeholder="Tên học sinh" maxlength="255" value="{{ $getHocSinhById[0]->Fullname}}" required />
+			<label for=Fullname">Tên học sinh</label>
+			<input type="text" class="form-control" id="full_name" name="full_name" placeholder="Tên học sinh" maxlength="255" value="{{ $getHocSinhById[0]->full_name}}" required />
 		</div>
 		<div class="form-group">
 			<label for="email">Email</label>

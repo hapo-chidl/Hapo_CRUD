@@ -20,7 +20,7 @@ class HocsinhController extends Controller
      */
     public function index()
     {
-        $getData = DB::table('student')->select('id','Fullname','email','avatar','address')->get();
+        $getData = DB::table('students')->select('id','full_name','email','avatar','address')->get();
 	    return view('Templates.list')->with('listhocsinh',$getData);
     }
 
@@ -45,13 +45,13 @@ class HocsinhController extends Controller
     {
         $allRequest  = $request->all();
 	    $dataInsertToDatabase = array(
-		    'Fullname'  => $allRequest['Fullname'],
+		    'full_name'  => $allRequest['full_name'],
 		    'email' =>$allRequest['email'],
 		    'avatar' => $allRequest['avatar'],
 		    'address' =>$allRequest['address'],
 	);
 	
-	$insertData = DB::table('student')->insert($dataInsertToDatabase);
+	$insertData = DB::table('students')->insert($dataInsertToDatabase);
 	if ($insertData) {
 		Session::flash('success', 'Thêm mới học sinh thành công!');
 	}else {                        
@@ -80,7 +80,7 @@ class HocsinhController extends Controller
      */
     public function edit($id)
     {
-        $getData = DB::table('student')->select('id','Fullname','email','avatar','address')->where('id',$id)->get();
+        $getData = DB::table('students')->select('id','full_name','email','avatar','address')->where('id',$id)->get();
         return view('Templates.edit')->with('getHocSinhById',$getData);
     }
 
@@ -93,8 +93,8 @@ class HocsinhController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updateData = DB::table('student')->where('id', $request->id)->update([
-		    'Fullname' => $request->Fullname,
+        $updateData = DB::table('studentư')->where('id', $request->id)->update([
+		    'full_name' => $request->Fullname,
             'email' => $request->email,
             'avatar' => $request->avatar,
             'address' => $request->address
@@ -117,7 +117,7 @@ class HocsinhController extends Controller
      */
     public function destroy($id)
     {
-        $deleteData = DB::table('student')->where('id','=',$id)->delete();
+        $deleteData = DB::table('students')->where('id','=',$id)->delete();
         if ($deleteData) {
             Session::flash('success', 'Xóa học sinh thành công!');
         }else {                        

@@ -48,7 +48,7 @@
 					@foreach($listhocsinh as $key => $hocsinh)
                     <tr>
                         <td>{{ $key+1 }}</td>
-                        <td>{{ $hocsinh->Fullname}}</td>
+                        <td>{{ $hocsinh->full_name}}</td>
                         <td>{{ $hocsinh->email }}</td>
                         <td><img src="{{ $hocsinh->avatar }}"></td>
                         <td>{{ $hocsinh->email }}</td>
