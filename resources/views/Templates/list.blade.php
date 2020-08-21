@@ -48,19 +48,12 @@
 				<?php ?>
 				@foreach($listhocsinh as $key => $hocsinh)
 					<tr>
-						<?php ?>
 						<td>{{ $key+1 }}</td>
-						<?php ?>
 						<td>{{ $hocsinh->Fullname}}</td>
-						<?php ?>
 						<td>{{ $hocsinh->email }}</td>
-                        <?php ?>
 						<td><img src="{{ $hocsinh->avatar }}"></td>
-                        <?php ?>
 						<td>{{ $hocsinh->email }}</td>
-						<?php ?>
 						<td><a href="/student/{{ $hocsinh->id }}/edit">Edit</a></td>
-						<?php ?>
 						<td><a href="/student/{{ $hocsinh->id }}">Delete</a></td>
 					</tr>
 				<?php ?>
