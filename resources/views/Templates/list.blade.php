@@ -29,39 +29,41 @@
 
 <?php?>
 <div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-12">
-		<div class="table-responsive">
-			<p><a class="btn btn-primary" href="{{ url('/student/create') }}">Thêm mới</a></p>
-			<table id="DataList" class="table table-bordered table-hover">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Full Name</th>
-						<th>Email</th>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="table-responsive">
+            <p><a class="btn btn-primary" href="{{ url('/student/create') }}">Thêm mới</a></p>
+            <table class="table table-bordered table-hover" id="DataList">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
                         <th>Avarta</th>
                         <th>Address</th>
-						<th>Edit</th>
-						<th>Delete</th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php ?>
-				@foreach($listhocsinh as $key => $hocsinh)
-					<tr>
-						<td>{{ $key+1 }}</td>
-						<td>{{ $hocsinh->Fullname}}</td>
-						<td>{{ $hocsinh->email }}</td>
-						<td><img src="{{ $hocsinh->avatar }}"></td>
-						<td>{{ $hocsinh->email }}</td>
-						<td><a href="/student/{{ $hocsinh->id }}/edit">Edit</a></td>
-						<td><a href="/student/{{ $hocsinh->id }}">Delete</a></td>
-					</tr>
-				<?php ?>
-				@endforeach
-				</tbody>
-			</table>
-		</div>
-	</div>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+					<?php ?>
+					@foreach($listhocsinh as $key => $hocsinh)
+                    <tr>
+                        <td>{{ $key+1 }}</td>
+                        <td>{{ $hocsinh->Fullname}}</td>
+                        <td>{{ $hocsinh->email }}</td>
+                        <td><img src="{{ $hocsinh->avatar }}"></td>
+                        <td>{{ $hocsinh->email }}</td>
+                        <td><a href="/student/{{ $hocsinh->id }}/edit">Edit</a></td>
+                        <td><a href="/student/{{ $hocsinh->id }}">Delete</a></td>
+                    </tr>
+						
+					<?php ?>
+					@endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 @endsection
