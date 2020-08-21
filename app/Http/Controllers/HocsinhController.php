@@ -91,7 +91,7 @@ class HocsinhController extends Controller
             'avatar' => $request->avatar,
             'address' => $request->address
         ]);
-	    return redirect('student');
+        return redirect('student');
     }
 
     /**
