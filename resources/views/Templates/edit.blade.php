@@ -11,9 +11,8 @@
 @if ( Session::has('success') )
     <div class="alert alert-danger alert-dismissible" role="alert">
         <strong>{{ Session::get('success') }}</strong> 
-		<button aria-label="Close" class="close" data-dismiss="alert" type="button">
-		    <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
-		</button>
+		<button aria-label="Close" class="close" data-dismiss="alert"
+        type="button"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button>
     </div>
 @endif 
 
