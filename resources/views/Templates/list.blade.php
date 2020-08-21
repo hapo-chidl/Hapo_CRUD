@@ -45,7 +45,7 @@
                     </tr>
                 </thead>
                 <tbody>
-					@foreach($listhocsinh as $key => $hocsinh)
+                @foreach($listhocsinh as $key => $hocsinh)
                     <tr>
                         <td>{{ $key+1 }}</td>
                         <td>{{ $hocsinh->full_name}}</td>
@@ -55,7 +55,7 @@
                         <td><a href="/student/{{ $hocsinh->id }}/edit">Edit</a></td>
                         <td><a href="/student/{{ $hocsinh->id }}">Delete</a></td>
                     </tr>
-					@endforeach
+                @endforeach
                 </tbody>
             </table>
         </div>
