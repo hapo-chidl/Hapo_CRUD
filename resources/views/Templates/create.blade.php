@@ -6,8 +6,8 @@
 </div>
 @if ( Session::has('success') )
     <div class="alert alert-success alert-dismissible" role="alert">
-        <strong>{{ Session::get('success') }}</strong> 
-	    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+        <strong> {{ Session::get('success') }} </strong> 
+        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
 	        <span aria-hidden="true">&times;</span> 
 	        <span class="sr-only">Close</span>
 	    </button>
@@ -29,7 +29,7 @@
         @csrf
         <div class="form-group">
             <label for="Fullname">Full name</label>
-			<input class="form-control" id="full_name" maxlength="255" name="full_name" placeholder="Fullname" required="" type="text">
+            <input class="form-control" id="full_name" maxlength="255" name="full_name" placeholder="Fullname" required="" type="text">
 			@if ($errors->has('Fullname'))
                 <div class="alert alert-danger">
                     {{ $errors->first('Fullname') }}
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label> 
-			<input class="form-control" id="email" name="email" placeholder="Email" required="" type="text"> 
+		    <input class="form-control" id="email" name="email" placeholder="Email" required="" type="text"> 
 			@if ($errors->has('email'))
                 <div class="alert alert-danger">
                     {{ $errors->first('email') }}
@@ -47,7 +47,7 @@
         </div>
         <div class="form-group">
             <label for="address">Address</label> 
-			<input class="form-control" id="address" name="address" placeholder="Address" required="" type="text"> 
+		    <input class="form-control" id="address" name="address" placeholder="Address" required="" type="text"> 
 			@if ($errors->has('address'))
                 <div class="alert alert-danger">
                     {{ $errors->first('address') }}

@@ -8,7 +8,7 @@
 
 <?php ?>
 @if ( Session::has('success') )
-	<div class="alert alert-success alert-dismissible" role="alert">
+    <div class="alert alert-success alert-dismissible" role="alert">
 		<strong>{{ Session::get('success') }}</strong>
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
@@ -19,7 +19,7 @@
 
 <?php ?>
 @if ( Session::has('error') )
-	<div class="alert alert-danger alert-dismissible" role="alert">
+    <div class="alert alert-danger alert-dismissible" role="alert">
 		<strong>{{ Session::get('error') }}</strong>
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
@@ -34,8 +34,8 @@
 	<center><h4>Sửa học sinh</h4></center>
 	<form action="{{ url('/student') }}" method="post">
 		@csrf
-		<input type="hidden" id="id" name="id" value="{!! $getHocSinhById[0]->id !!}" />
-        <div class="form-group">
+	    <input type="hidden" id="id" name="id" value="{!! $getHocSinhById[0]->id !!}" />
+	    <div class="form-group">
 			<label for=Fullname">Tên học sinh</label>
 			<input type="text" class="form-control" id="full_name" name="full_name" placeholder="Tên học sinh" maxlength="255" value="{{ $getHocSinhById[0]->full_name}}" required />
 		</div>
@@ -44,12 +44,12 @@
 			<input type="text" class="form-control" id="email"  name="email" placeholder="Email" maxlength="15" value="{{ $getHocSinhById[0]->email}}" required />
 		</div>		
         <div class="form-group">
-			<label for="address">Address</label>
-			<input type="text" class="form-control" id="address"  name="address" placeholder="Address"  value="{{ $getHocSinhById[0]->address}}" required />
+		    <label for="address">Address</label>
+		    <input type="text" class="form-control" id="address"  name="address" placeholder="Address"  value="{{ $getHocSinhById[0]->address}}" required />
 		</div>	
         <div class="form-group">
-        <label for="avatar">Avatar</label>
-        <input type="file" id="avatar" name="avatar" placeholder="avatar"  value="{{ $getHocSinhById[0]->avatar}}" required/>
+            <label for="avatar">Avatar</label>
+            <input type="file" id="avatar" name="avatar" placeholder="avatar"  value="{{ $getHocSinhById[0]->avatar}}" required/>
         </div>
 		<center><button type="submit" class="btn btn-primary">Lưu lại</button></center>
 	</form>
