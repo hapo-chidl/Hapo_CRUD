@@ -88,7 +88,7 @@ class HocsinhController extends Controller
     public function update(Request $request, $id)
     {
         $updateData = DB::table('studentư')->where('id', $request->id)->update([
-		    'full_name' => $request->Fullname,
+	        'full_name' => $request->Fullname,
             'email' => $request->email,
             'avatar' => $request->avatar,
             'address' => $request->address
@@ -105,6 +105,6 @@ class HocsinhController extends Controller
     public function destroy($id)
     {
         $deleteData = DB::table('students')->where('id','=',$id)->delete();
-       return  redirect('student');
+        return  redirect('student');
     }
 }
