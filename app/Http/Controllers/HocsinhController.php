@@ -21,7 +21,7 @@ class HocsinhController extends Controller
     public function index()
     {
         $getData = DB::table('student')->select('id','Fullname','email','avatar','address')->get();
-	return view('Templates.list')->with('listhocsinh',$getData);
+	    return view('Templates.list')->with('listhocsinh',$getData);
     }
 
     /**
@@ -94,12 +94,11 @@ class HocsinhController extends Controller
     public function update(Request $request, $id)
     {
         $updateData = DB::table('student')->where('id', $request->id)->update([
-		'Fullname' => $request->Fullname,
-        'email' => $request->email,
-        'avatar' => $request->avatar,
-        'address' => $request->address
- 
-	]);
+		    'Fullname' => $request->Fullname,
+            'email' => $request->email,
+            'avatar' => $request->avatar,
+            'address' => $request->address
+        ]);
 
 	if ($updateData) {
 		Session::flash('success', 'Sửa học sinh thành công!');

@@ -45,8 +45,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
-					<?php ?>
 					@foreach($listhocsinh as $key => $hocsinh)
                     <tr>
                         <td>{{ $key+1 }}</td>
@@ -57,8 +55,6 @@
                         <td><a href="/student/{{ $hocsinh->id }}/edit">Edit</a></td>
                         <td><a href="/student/{{ $hocsinh->id }}">Delete</a></td>
                     </tr>
-						
-					<?php ?>
 					@endforeach
                 </tbody>
             </table>
