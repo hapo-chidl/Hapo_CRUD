@@ -44,8 +44,8 @@ class HocsinhController extends Controller
     public function store(CreateStudent $request)
     {
         $allRequest  = $request->all();
-	    $dataInsertToDatabase = array(
-		    'full_name'  => $allRequest['full_name'],
+        $dataInsertToDatabase = array(
+            'full_name'  => $allRequest['full_name'],
 		    'email' =>$allRequest['email'],
 		    'avatar' => $allRequest['avatar'],
 		    'address' =>$allRequest['address'],
@@ -88,7 +88,7 @@ class HocsinhController extends Controller
     public function update(Request $request, $id)
     {
         $updateData = DB::table('studentư')->where('id', $request->id)->update([
-	        'full_name' => $request->full_name,
+            'full_name' => $request->full_name,
             'email' => $request->email,
             'avatar' => $request->avatar,
             'address' => $request->address
