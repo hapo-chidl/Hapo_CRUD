@@ -46,9 +46,9 @@ class HocsinhController extends Controller
         $allRequest  = $request->all();
         $dataInsertToDatabase = array(
             'avatar' => $allRequest['avatar'],
-		    'address' =>$allRequest['address'],
             'email' =>$allRequest['email'],
             'full_name'  => $allRequest['full_name'],
+            'address' =>$allRequest['address'],
 	);
 	
 	$insertData = DB::table('students')->insert($dataInsertToDatabase);
