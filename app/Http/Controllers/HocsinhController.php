@@ -21,7 +21,7 @@ class HocsinhController extends Controller
     public function index()
     {
         $getData = DB::table('students')->select('id','full_name','email','avatar','address')->get();
-	    return view('Templates.list')->with('listhocsinh',$getData);
+        return view('Templates.list')->with('listhocsinh',$getData);
     }
 
     /**
@@ -31,7 +31,6 @@ class HocsinhController extends Controller
      */
     public function create()
     {
-        //
         return view('Templates.create');
     }
 
@@ -51,8 +50,8 @@ class HocsinhController extends Controller
             'address' => $allRequest['address'],
 	);
 	
-	$insertData = DB::table('students')->insert($dataInsertToDatabase);
-	return redirect('student');
+	    $insertData = DB::table('students')->insert($dataInsertToDatabase);
+	    return redirect('student');
     }
 
     /**
@@ -93,7 +92,7 @@ class HocsinhController extends Controller
             'avatar' => $request->avatar,
             'address' => $request->address
         ]);
-	return redirect('student');
+	    return redirect('student');
     }
 
     /**
