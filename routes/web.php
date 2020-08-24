@@ -19,4 +19,3 @@ Route::get('/', function () {
  
 Route::resource ('student','StudentController',['except' => ['show']]);
 Route::post('student/store', 'StudentController@store');
-Route::get('student/{student}','StudentController@destroy');
