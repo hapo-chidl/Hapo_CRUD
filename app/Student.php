@@ -13,5 +13,4 @@ class Student extends Model
         'full_name', 'avatar', 'email', 'address',
     ];
     protected $table = 'students';
-
 }
