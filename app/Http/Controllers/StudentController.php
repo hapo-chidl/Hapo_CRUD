@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-
 use App\Http\Requests\CreateStudent;
-
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Storage;
 use Session;
+use App\Student;
 
-class HocsinhController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +18,8 @@ class HocsinhController extends Controller
      */
     public function index()
     {
-        $getData = DB::table('students')->select('id','full_name','email','avatar','address')->get();
-        return view('Templates.list')->with('listhocsinh',$getData);
+        $students = Student::simplePaginate(15);
+        return view('student.list')->with('listStudent',$students);
     }
 
     /**
@@ -31,7 +29,7 @@ class HocsinhController extends Controller
      */
     public function create()
     {
-        return view('Templates.create');
+        return view('student.create');
     }
 
     /**
@@ -40,18 +38,27 @@ class HocsinhController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateStudent $request)
+
+    public function store(Request $request)
+{
+    $allRequest  = $request->all();
+    if($request->hasFile('avatar'))
     {
-        $allRequest  = $request->all();
-        $dataInsertToDatabase = array(
-            'avatar' => $allRequest['avatar'],
-            'email' => $allRequest['email'],
-            'full_name' => $allRequest['full_name'],
-            'address' => $allRequest['address'],
-	);
-        $insertData = DB::table('students')->insert($dataInsertToDatabase);
-        return redirect('student');
+        $path = Storage::putFile('avatar', $request->file('avatar'));
+        $destination_path = 'public/images/student' ;
+        $image = $request->file('avatar');
+        $image_name = $image->getClientOriginalName();
+        $path = $request->file('image') -> storeAs($destination_path, $image_name);
+        $allRequest['avatar'] = $image_name;
     }
+    Student::insert([
+        'avatar' => $allRequest['avatar'],
+        'email' => $allRequest['email'],
+        'full_name' => $allRequest['full_name'],
+        'address' => $allRequest['address'],
+    ]);
+	return redirect('student');
+}
 
     /**
      * Display the specified resource.
@@ -72,8 +79,8 @@ class HocsinhController extends Controller
      */
     public function edit($id)
     {
-        $getData = DB::table('students')->select('id','full_name','email','avatar','address')->where('id',$id)->get();
-        return view('Templates.edit')->with('getHocSinhById',$getData);
+        $student = Student::find($id);
+        return view('student.edit')->with('getStudent',$student);
     }
 
     /**
@@ -85,7 +92,7 @@ class HocsinhController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updateData = DB::table('students')->where('id', $request->id)->update([
+        $update_student =Student::where('id', $request->id)->update([
             'full_name' => $request->full_name,
             'email' => $request->email,
             'avatar' => $request->avatar,
@@ -102,7 +109,7 @@ class HocsinhController extends Controller
      */
     public function destroy($id)
     {
-        $deleteData = DB::table('students')->where('id','=',$id)->delete();
+        $student = Student::where('id', '=', $id)->delete();
         return redirect('student');
     }
 }

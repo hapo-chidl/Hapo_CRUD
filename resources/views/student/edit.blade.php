@@ -1,5 +1,5 @@
 
-@extends('Templates.master') 
+@extends('student.master') 
 
 @section('title','Quản lý học sinh') 
 
@@ -11,8 +11,7 @@
 @if ( Session::has('success') )
     <div class="alert alert-danger alert-dismissible" role="alert">
         <strong>{{ Session::get('success') }}</strong> 
-		<button aria-label="Close" class="close" data-dismiss="alert"
-        type="button"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button>
+		<button aria-label="Close" class="close" data-dismiss="alert" type="button"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button>
     </div>
 @endif 
 
@@ -24,27 +23,27 @@
     </div>
 @endif 
 
-<p><a class="btn btn-primary" href="/{{%20url('/student')%20}}">Về danh sách</a></p>
+<p><a class="btn btn-primary" href="{{ url('student') }}">Về danh sách</a></p>
 <div class="col-xs-4 col-xs-offset-4">
     <center><h4>Sửa học sinh</h4></center>
-    <form action="{{ url('/student') }}" method="post">
+    <form action="{{ url('student/store') }}" method="post">
         @csrf 
-		<input type="hidden" id="id" name="id" value="{!! $getHocSinhById[0]->id !!}" />
+        <input type="hidden" id="id" name="id" value="{!! $getStudent ->id !!}" />
 	    <div class="form-group">
-			<label for=Fullname">Tên học sinh</label>
-			<input type="text" class="form-control" id="full_name" name="full_name" placeholder="Tên học sinh" maxlength="255" value="{{ $getHocSinhById[0]->full_name}}" required />
+			<label for="full_name">Tên học sinh</label>
+			<input type="text" class="form-control" id="full_name" name="full_name" placeholder="Tên học sinh" maxlength="255" value="{{ $getStudent->full_name}}" required />
 		</div>
 		<div class="form-group">
 			<label for="email">Email</label>
-			<input type="text" class="form-control" id="email"  name="email" placeholder="Email" maxlength="15" value="{{ $getHocSinhById[0]->email}}" required />
+			<input type="text" class="form-control" id="email"  name="email" placeholder="Email" maxlength="15" value="{{ $getStudent->email}}" required />
         </div>		
         <div class="form-group">
 	        <label for="address">Address</label>
-	        <input type="text" class="form-control" id="address"  name="address" placeholder="Address"  value="{{ $getHocSinhById[0]->address}}" required />
+	        <input type="text" class="form-control" id="address"  name="address" placeholder="Address"  value="{{ $getStudent->address}}" required />
         </div>	 
 		<div class="form-group">
             <label for="avatar">Avatar</label>
-            <input type="file" id="avatar" name="avatar" placeholder="avatar"  value="{{ $getHocSinhById[0]->avatar}}" required/>
+            <input type="file" id="avatar" name="avatar" placeholder="avatar"  value="{{ $getStudent->avatar}}" required/>
         </div>
 	    <center><button type="submit" class="btn btn-primary">Lưu lại</button></center>
 	</form>

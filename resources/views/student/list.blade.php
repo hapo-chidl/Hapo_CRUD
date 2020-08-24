@@ -1,4 +1,4 @@
-@extends('Templates.master')
+@extends('student.master')
 
 @section('title','Quản lý học sinh')
 
@@ -30,15 +30,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($listhocsinh as $key => $hocsinh)
+                @foreach($listStudent as $key => $hocsinh)
                     <tr>
-                        <td>{{ $key+1 }}</td>
+                        <td>{{ $key + 1 }}</td>
                         <td>{{ $hocsinh->full_name}}</td>
                         <td>{{ $hocsinh->email }}</td>
-                        <td><img src="{{ $hocsinh->avatar }}"></td>
+                        <td><img src="{{ asset('/storage/images/student/'.$hocsinh->avatar) }}"></td>
                         <td>{{ $hocsinh->email }}</td>
                         <td><a href="/student/{{ $hocsinh->id }}/edit">Edit</a></td>
-                        <td><a href="/student/{{ $hocsinh->id }}">Delete</a></td>
+                        <td><a href="student/{{ $hocsinh->id }} "class="btn btn-sm btn-danger">Delete</a></td>
                     </tr>
                 @endforeach
                 </tbody>

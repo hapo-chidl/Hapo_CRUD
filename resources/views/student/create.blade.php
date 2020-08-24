@@ -1,4 +1,4 @@
-@extends('Templates.master') 
+@extends('student.master') 
 
 @section('title','Thêm mới học sinh') 
 
@@ -24,10 +24,10 @@
 <p><a class="btn btn-primary" href="{{ url('/student') }}">Về danh sách</a></p>
 <div class="col-xs-4 col-xs-offset-4">
     <h4>Thêm học sinh</h4>
-    <form action="{{ url('student') }}" method="post">
+    <form action="{{ url('/student/store') }}" method="post">
         @csrf
         <div class="form-group">
-            <label for="Fullname">Full name</label>
+            <label for="full_name">Full name</label>
             <input class="form-control" id="full_name" maxlength="255" name="full_name" placeholder="Fullname" required="" type="text">
 			@if ($errors->has('Fullname'))
                 <div class="alert alert-danger">

@@ -15,10 +15,12 @@ class CreateStudentTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('full_name',40);
+            $table->string('full_name', 40);
             $table->string('email')->unique();
             $table->string('avatar');
             $table->string('address');
+            $table->date('deleted_at')->nullable();
+            $table->timestamps();
         });
     }
 

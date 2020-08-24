@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
  
-Route::resource ('student','HocsinhController',['except' => ['show']]);
+Route::resource ('student','StudentController',['except' => ['show']]);
+Route::post('student/store', 'StudentController@store');
+Route::get('student/{student}','StudentController@destroy');
