@@ -24,11 +24,11 @@ class CreateStudent extends FormRequest
     public function rules()
     {
         return [
-                'full_name' => 'required|max:255',
-                'email' => 'required|email',
-                'avatar' => 'required|image',
-                'address' => 'required',
-            ];
+            'full_name' => 'required|max:255',
+            'email' => 'required|email',
+            'avatar' => 'required|image',
+            'address' => 'required',
+        ];
     
     }
 

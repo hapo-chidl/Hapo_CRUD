@@ -19,7 +19,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::simplePaginate(15);
-        return view('student.list')->with('listStudent',$students);
+        return view('student.list')->with('listStudent', $students);
     }
 
     /**
@@ -40,25 +40,25 @@ class StudentController extends Controller
      */
 
     public function store(Request $request)
-{
-    $allRequest  = $request->all();
-    if($request->hasFile('avatar'))
     {
-        $path = Storage::putFile('avatar', $request->file('avatar'));
-        $destination_path = 'public/images/student' ;
-        $image = $request->file('avatar');
-        $image_name = $image->getClientOriginalName();
-        $path = $request->file('image') -> storeAs($destination_path, $image_name);
-        $allRequest['avatar'] = $image_name;
+        $allRequest  = $request->all();
+        if($request->hasFile('avatar')) {
+            $path = Storage::putFile('avatar', $request->file('avatar'));
+            $destination_path = 'public/images/student' ;
+            $image = $request->file('avatar');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('image') -> storeAs($destination_path, $image_name);
+            $allRequest['avatar'] = $image_name;
+        }
+
+        Student::insert([
+            'avatar' => $allRequest['avatar'],
+            'email' => $allRequest['email'],
+            'full_name' => $allRequest['full_name'],
+            'address' => $allRequest['address'],
+        ]);
+	    return redirect('student');
     }
-    Student::insert([
-        'avatar' => $allRequest['avatar'],
-        'email' => $allRequest['email'],
-        'full_name' => $allRequest['full_name'],
-        'address' => $allRequest['address'],
-    ]);
-	return redirect('student');
-}
 
     /**
      * Display the specified resource.
@@ -79,7 +79,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $student = Student::find($id);
+        $student = Student::findOrFail($id);
         return view('student.edit')->with('getStudent',$student);
     }
 
@@ -92,12 +92,16 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update_student =Student::where('id', $request->id)->update([
-            'full_name' => $request->full_name,
-            'email' => $request->email,
-            'avatar' => $request->avatar,
-            'address' => $request->address
-        ]);
+        $student = $request->all();
+        if ($request->hasFile('avatar')) {
+            $file = $request->avatar;
+            $avatar = uniqid() . "_" . $file->getClientOriginalName();
+            $old_avatar = Student::find($id)->avatar;
+            Storage::delete('public/'.$old_avatar);
+            $request->file('avatar')->storeAs('public', $avatar);
+            $student['avatar'] = $avatar;
+        }
+        Student::findOrFail($id)->update($student);
         return redirect('student');
     }
 
@@ -109,7 +113,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $student = Student::where('id', '=', $id)->delete();
+    //    / $student = Student::where('id', '=', $id)->delete();
+        Student::findOrFail($id)->delete();
         return redirect('student');
     }
 }

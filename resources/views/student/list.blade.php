@@ -16,7 +16,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="table-responsive">
-            <p><a class="btn btn-primary" href="{{ url('/student/create') }}">Thêm mới</a></p>
+            <p><a class="btn btn-primary" href="{{ route('student.create') }}">Thêm mới</a></p>
             <table class="table table-bordered table-hover" id="DataList">
                 <thead>
                     <tr>
@@ -35,10 +35,10 @@
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $hocsinh->full_name}}</td>
                         <td>{{ $hocsinh->email }}</td>
-                        <td><img src="{{ asset('/storage/images/student/'.$hocsinh->avatar) }}"></td>
+                        <td><img src=" {{ asset('/storage/images/student/' .$hocsinh->avatar) }} "></td>
                         <td>{{ $hocsinh->email }}</td>
-                        <td><a href="/student/{{ $hocsinh->id }}/edit">Edit</a></td>
-                        <td><a href="student/{{ $hocsinh->id }} "class="btn btn-sm btn-danger">Delete</a></td>
+                        <td><a href=" {{ route('student.edit', $hocsinh->id) }} ">Edit</a></td>
+                        <td><a href="{{ route('student.destroy', $hocsinh->id) }} "class="btn btn-sm btn-danger">Delete</a></td>
                     </tr>
                 @endforeach
                 </tbody>

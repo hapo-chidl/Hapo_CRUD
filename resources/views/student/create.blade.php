@@ -21,10 +21,10 @@
         type="button"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button>
     </div>
 @endif
-<p><a class="btn btn-primary" href="{{ url('/student') }}">Về danh sách</a></p>
+<p><a class="btn btn-primary" href=" {{ route('student.index') }} ">Về danh sách</a></p>
 <div class="col-xs-4 col-xs-offset-4">
     <h4>Thêm học sinh</h4>
-    <form action="{{ url('/student/store') }}" method="post">
+    <form action="{{ route('student.store') }}" method="post">
         @csrf
         <div class="form-group">
             <label for="full_name">Full name</label>

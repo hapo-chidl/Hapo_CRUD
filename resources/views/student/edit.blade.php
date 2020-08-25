@@ -23,10 +23,10 @@
     </div>
 @endif 
 
-<p><a class="btn btn-primary" href="{{ url('student') }}">Về danh sách</a></p>
+<p><a class="btn btn-primary" href="{{ route('student.index') }}">Về danh sách</a></p>
 <div class="col-xs-4 col-xs-offset-4">
     <center><h4>Sửa học sinh</h4></center>
-    <form action="{{ url('student/store') }}" method="post">
+    <form action="{{ route('student.store') }}" method="post">
         @csrf 
         <input type="hidden" id="id" name="id" value="{!! $getStudent ->id !!}" />
 	    <div class="form-group">
