@@ -1,6 +1,6 @@
 @extends('student.master') 
 
-@section('title','Thêm mới học sinh') 
+@section('title', 'Thêm mới học sinh') 
 
 @section('content')
 
@@ -29,9 +29,9 @@
         <div class="form-group">
             <label for="full_name">Full name</label>
             <input class="form-control" id="full_name" maxlength="255" name="full_name" placeholder="Fullname" required="" type="text">
-			@if ($errors->has('Fullname'))
+			@if ($errors->has('full_name'))
                 <div class="alert alert-danger">
-                    {{ $errors->first('Fullname') }}
+                    {{ $errors->first('full_name') }}
                 </div>
 			@endif
         </div>

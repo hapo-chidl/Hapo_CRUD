@@ -75,7 +75,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = Student::findOrFail($id);
-        return view('student.edit')->with('getStudent',$student);
+        return view('student.edit')->with('getStudent', $student);
     }
 
     /**
@@ -92,7 +92,7 @@ class StudentController extends Controller
             $file = $request->avatar;
             $avatar = uniqid() . "_" . $file->getClientOriginalName();
             $oldAvatar = Student::find($id)->avatar;
-            Storage::delete('public/' .$oldAvatar);
+            Storage::delete('public/' . $oldAvatar);
             $request->file('avatar')->storeAs('public', $avatar);
             $student['avatar'] = $avatar;
         }

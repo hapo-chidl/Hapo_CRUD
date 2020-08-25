@@ -1,6 +1,6 @@
 @extends('student.master')
 
-@section('title','Quản lý học sinh')
+@section('title', 'Quản lý học sinh')
 
 @section('content')
 
@@ -30,15 +30,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($listStudent as $key => $hocsinh)
+                @foreach($listStudent as $key => $student)
                     <tr>
                         <td>{{ $key + 1 }}</td>
-                        <td>{{ $hocsinh->full_name }}</td>
-                        <td>{{ $hocsinh->email }}</td>
-                        <td><img src="{{ asset('/storage/images/student/' .$hocsinh->avatar) }}"></td>
-                        <td>{{ $hocsinh->email }}</td>
-                        <td><a href="{{ route('student.edit', $hocsinh->id) }}">Edit</a></td>
-                        <td><a href="{{ route('student.destroy', $hocsinh->id) }}"class="btn btn-sm btn-danger">Delete</a></td>
+                        <td>{{ $student->full_name }}</td>
+                        <td>{{ $student->email }}</td>
+                        <td><img src="{{ asset('/storage/images/student/' . $student->avatar) }}"></td>
+                        <td>{{ $student->email }}</td>
+                        <td><a href="{{ route('student.edit', $student->id) }}">Edit</a></td>
+                        <td><a href="{{ route('student.destroy', $student->id) }}"class="btn btn-sm btn-danger">Delete</a></td>
                     </tr>
                 @endforeach
                 </tbody>

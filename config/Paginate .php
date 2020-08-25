@@ -2,5 +2,5 @@
 
 return [
 
-    'pagination' => '15',
+    'pagination' => 15,
 ];
