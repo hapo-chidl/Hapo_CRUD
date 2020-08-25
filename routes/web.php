@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+ 
+Route::resource ('student', 'StudentController', ['except' => ['show']]);
+Route::post('student/store', 'StudentController@store');
