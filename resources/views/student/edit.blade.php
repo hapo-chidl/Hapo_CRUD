@@ -11,14 +11,14 @@
 @if ( Session::has('success') )
     <div class="alert alert-danger alert-dismissible" role="alert">
         <strong>{{ Session::get('success') }}</strong> 
-		<button aria-label="Close" class="close" data-dismiss="alert" type="button"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button>
+	    <button aria-label="Close" class="close" data-dismiss="alert" type="button"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button>
     </div>
 @endif 
 
 @if ( Session::has('error') )
     <div class="alert alert-danger alert-dismissible" role="alert">
         <strong>{{ Session::get('error') }}</strong> 
-		<button aria-label="Close" class="close" data-dismiss="alert"
+	    <button aria-label="Close" class="close" data-dismiss="alert"
         type="button"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button>
     </div>
 @endif 
@@ -30,12 +30,12 @@
         @csrf 
         <input type="hidden" id="id" name="id" value="{!! $getStudent ->id !!}" />
 	    <div class="form-group">
-			<label for="full_name">Tên học sinh</label>
-			<input type="text" class="form-control" id="full_name" name="full_name" placeholder="Tên học sinh" maxlength="255" value="{{ $getStudent->full_name}}" required />
+		    <label for="full_name">Tên học sinh</label>
+		    <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Tên học sinh" maxlength="255" value="{{ $getStudent->full_name}}" required />
 		</div>
 		<div class="form-group">
-			<label for="email">Email</label>
-			<input type="text" class="form-control" id="email"  name="email" placeholder="Email" maxlength="15" value="{{ $getStudent->email}}" required />
+		    <label for="email">Email</label>
+		    <input type="text" class="form-control" id="email"  name="email" placeholder="Email" maxlength="15" value="{{ $getStudent->email}}" required />
         </div>		
         <div class="form-group">
 	        <label for="address">Address</label>

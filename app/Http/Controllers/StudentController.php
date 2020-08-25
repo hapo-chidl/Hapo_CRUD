@@ -113,7 +113,6 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-    //    / $student = Student::where('id', '=', $id)->delete();
         Student::findOrFail($id)->delete();
         return redirect('student');
     }
