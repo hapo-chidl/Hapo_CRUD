@@ -44,7 +44,7 @@ class StudentController extends Controller
         $allRequest  = $request->all();
         if($request->hasFile('avatar')) {
             $path = Storage::putFile('avatar', $request->file('avatar'));
-            $destinationPath = 'public/images/student' ;
+            $destinationPath = 'public/images/student';
             $image = $request->file('avatar');
             $imageName = $image->getClientOriginalName();
             $path = $request->file('image')->storeAs($destinationPath, $imageName);
