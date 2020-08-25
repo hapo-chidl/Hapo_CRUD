@@ -33,12 +33,12 @@
                 @foreach($listStudent as $key => $hocsinh)
                     <tr>
                         <td>{{ $key + 1 }}</td>
-                        <td>{{ $hocsinh->full_name}}</td>
+                        <td>{{ $hocsinh->full_name }}</td>
                         <td>{{ $hocsinh->email }}</td>
-                        <td><img src=" {{ asset('/storage/images/student/' .$hocsinh->avatar) }} "></td>
+                        <td><img src="{{ asset('/storage/images/student/' .$hocsinh->avatar) }}"></td>
                         <td>{{ $hocsinh->email }}</td>
-                        <td><a href=" {{ route('student.edit', $hocsinh->id) }} ">Edit</a></td>
-                        <td><a href="{{ route('student.destroy', $hocsinh->id) }} "class="btn btn-sm btn-danger">Delete</a></td>
+                        <td><a href="{{ route('student.edit', $hocsinh->id) }}">Edit</a></td>
+                        <td><a href="{{ route('student.destroy', $hocsinh->id) }}"class="btn btn-sm btn-danger">Delete</a></td>
                     </tr>
                 @endforeach
                 </tbody>

@@ -21,7 +21,7 @@
         type="button"><span aria-hidden="true">&times;</span> <span class="sr-only">Close</span></button>
     </div>
 @endif
-<p><a class="btn btn-primary" href=" {{ route('student.index') }} ">Về danh sách</a></p>
+<p><a class="btn btn-primary" href="{{ route('student.index') }}">Về danh sách</a></p>
 <div class="col-xs-4 col-xs-offset-4">
     <h4>Thêm học sinh</h4>
     <form action="{{ route('student.store') }}" method="post">

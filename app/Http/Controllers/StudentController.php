@@ -18,7 +18,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::simplePaginate(15);
+        $students = Student::paginate(config('Paginate.pagination'));
         return view('student.list')->with('listStudent', $students);
     }
 
@@ -44,20 +44,15 @@ class StudentController extends Controller
         $allRequest  = $request->all();
         if($request->hasFile('avatar')) {
             $path = Storage::putFile('avatar', $request->file('avatar'));
-            $destination_path = 'public/images/student' ;
+            $destinationPath = 'public/images/student' ;
             $image = $request->file('avatar');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('image') -> storeAs($destination_path, $image_name);
-            $allRequest['avatar'] = $image_name;
+            $imageName = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs($destinationPath, $imageName);
+            $allRequest['avatar'] = $imageName;
         }
-
-        Student::insert([
-            'avatar' => $allRequest['avatar'],
-            'email' => $allRequest['email'],
-            'full_name' => $allRequest['full_name'],
-            'address' => $allRequest['address'],
-        ]);
-	    return redirect('student');
+        
+        Student::create($allRequest);
+        return redirect()->route('student.index');
     }
 
     /**
@@ -96,13 +91,13 @@ class StudentController extends Controller
         if ($request->hasFile('avatar')) {
             $file = $request->avatar;
             $avatar = uniqid() . "_" . $file->getClientOriginalName();
-            $old_avatar = Student::find($id)->avatar;
-            Storage::delete('public/'.$old_avatar);
+            $oldAvatar = Student::find($id)->avatar;
+            Storage::delete('public/' .$oldAvatar);
             $request->file('avatar')->storeAs('public', $avatar);
             $student['avatar'] = $avatar;
         }
         Student::findOrFail($id)->update($student);
-        return redirect('student');
+        return redirect()->route('student.index');
     }
 
     /**
@@ -114,6 +109,6 @@ class StudentController extends Controller
     public function destroy($id)
     {
         Student::findOrFail($id)->delete();
-        return redirect('student');
+        return redirect()->route('student.index');
     }
 }
